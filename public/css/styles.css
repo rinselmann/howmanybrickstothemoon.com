@@ -1,0 +1,431 @@
+/*
+ * Palette and layout.
+ *
+ * viz.js emits SVG with semantic class names and never sets a colour itself,
+ * so every fill and stroke for both visualisations is defined here alongside
+ * the rest of the theme.
+ */
+
+:root {
+  --bg: #0b0f1a;
+  --bg-panel: #141b2d;
+  --bg-inset: #1c2540;
+  --border: #273353;
+  --text: #e8edf7;
+  --text-dim: #96a3c0;
+  --accent: #ffb547;
+  --accent-soft: #ffd694;
+  --moon: #dfe6f5;
+  --earth: #4f9de0;
+
+  --brick-top: #ffc65c;
+  --brick-right: #d98f24;
+  --brick-left: #a86a14;
+  --stud-top: #ffd689;
+  --stud-side: #e0a337;
+
+  --radius: 14px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.25rem 4rem;
+  background: radial-gradient(circle at 15% -10%, #1b2748 0%, var(--bg) 55%);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.masthead {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3rem 0 2rem;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  background: linear-gradient(100deg, var(--accent) 10%, var(--moon) 75%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  margin: 0.5rem 0 0;
+  color: var(--text-dim);
+  max-width: 52ch;
+}
+
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.panel h2 {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* ---- Controls ---- */
+
+.controls {
+  display: grid;
+  gap: 1.35rem;
+  align-content: start;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.field > label,
+.field legend {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-dim);
+  font-weight: 600;
+  padding: 0;
+}
+
+select {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  background: var(--bg-inset);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.orientation-options {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.orientation {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.8rem 0.9rem;
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.orientation:hover {
+  border-color: #3a4a75;
+}
+
+.orientation:has(input:checked) {
+  border-color: var(--accent);
+  background: #242c42;
+}
+
+.orientation input {
+  margin-top: 0.3rem;
+  accent-color: var(--accent);
+}
+
+.orientation-body {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.orientation-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.orientation-blurb {
+  color: var(--text-dim);
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+
+.orientation-pitch {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent-soft);
+}
+
+.checkbox {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: 0.92rem;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.checkbox input {
+  accent-color: var(--accent);
+  width: 1rem;
+  height: 1rem;
+}
+
+/* A gap that does not apply on this axis stays visible but recedes. */
+#gap-row.is-inert {
+  opacity: 0.55;
+}
+
+.note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.note:empty {
+  display: none;
+}
+
+/* ---- Headline ---- */
+
+.headline {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+}
+
+.headline-label {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.headline-count {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: clamp(1.6rem, 4.4vw, 2.9rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.headline-words {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+}
+
+.headline-words strong {
+  color: var(--text);
+}
+
+.stats {
+  margin: 0;
+  display: grid;
+  gap: 0.1rem;
+  border-top: 1px solid var(--border);
+}
+
+.stats > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stats dt {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+}
+
+.stats dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* ---- Brick diagram ---- */
+
+#brick-diagram {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+
+.face {
+  stroke: #6b4a10;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.face-top {
+  fill: var(--brick-top);
+}
+
+.face-right {
+  fill: var(--brick-right);
+}
+
+.face-left {
+  fill: var(--brick-left);
+}
+
+.stud-side {
+  fill: var(--stud-side);
+}
+
+.stud-top {
+  fill: var(--stud-top);
+  stroke: #6b4a10;
+  stroke-width: 1;
+}
+
+.axis-arrow line {
+  stroke: var(--moon);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  stroke-linecap: round;
+}
+
+.arrow-head {
+  fill: var(--moon);
+  stroke: none;
+}
+
+.caption {
+  margin: 0.75rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.86rem;
+}
+
+/* ---- Ladder ---- */
+
+.ladder-panel {
+  grid-column: 1 / -1;
+}
+
+#ladder {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ladder-axis {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.grad-earth {
+  stop-color: var(--earth);
+}
+
+.grad-moon {
+  stop-color: var(--moon);
+}
+
+.rung-tick {
+  stroke: var(--border);
+  stroke-width: 2;
+}
+
+.rung-name {
+  fill: var(--text-dim);
+  font-family: var(--font);
+  font-size: 14px;
+}
+
+.rung-count {
+  fill: var(--text);
+  font-family: var(--mono);
+  font-size: 15px;
+}
+
+.rung-alt {
+  fill: var(--text-dim);
+  font-family: var(--font);
+  font-size: 11.5px;
+}
+
+.rung-goal .rung-name,
+.rung-goal .rung-count {
+  fill: var(--accent);
+  font-weight: 700;
+}
+
+.rung-goal .rung-tick {
+  stroke: var(--accent);
+}
+
+.ladder-caption {
+  fill: var(--text-dim);
+  font-family: var(--font);
+  font-size: 12px;
+}
+
+/* ---- Colophon ---- */
+
+.colophon {
+  max-width: 1120px;
+  margin: 2.5rem auto 0;
+  color: var(--text-dim);
+  font-size: 0.86rem;
+}
+
+.colophon h2 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.colophon ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.4rem;
+  max-width: 78ch;
+}
+
+@media (max-width: 860px) {
+  main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

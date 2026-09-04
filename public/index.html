@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How Many Bricks to the Moon?</title>
+    <meta
+      name="description"
+      content="Pick a brick and an orientation, and find out how many it would take to stack from Earth to the Moon."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <h1>How Many Bricks to the Moon?</h1>
+      <p class="tagline">
+        Choose a brick, decide which way up it goes, and stack it until it hits the Moon.
+      </p>
+    </header>
+
+    <main>
+      <section class="panel controls" aria-label="Stack settings">
+        <div class="field">
+          <label for="brick-select">Brick</label>
+          <select id="brick-select"></select>
+        </div>
+
+        <fieldset class="field">
+          <legend>Orientation</legend>
+          <div id="orientation-options" class="orientation-options"></div>
+        </fieldset>
+
+        <div class="field" id="gap-row">
+          <label class="checkbox">
+            <input type="checkbox" id="gap-toggle" checked />
+            <span id="gap-label"></span>
+          </label>
+          <p class="note" id="gap-note"></p>
+        </div>
+
+        <div class="field">
+          <label for="distance-select">Distance to the Moon</label>
+          <select id="distance-select"></select>
+        </div>
+
+        <div class="field">
+          <label for="rate-select">Laying speed</label>
+          <select id="rate-select"></select>
+        </div>
+      </section>
+
+      <section class="panel headline" aria-live="polite">
+        <p class="headline-label">You would need</p>
+        <p class="headline-count" id="headline-count"></p>
+        <p class="headline-words">
+          about <strong id="headline-words"></strong> &times;
+          <span id="headline-brick"></span>
+        </p>
+
+        <dl class="stats">
+          <div><dt>Altitude per brick</dt><dd id="stat-pitch"></dd></div>
+          <div><dt>Distance to span</dt><dd id="stat-distance"></dd></div>
+          <div><dt>Total mass</dt><dd id="stat-mass"></dd></div>
+          <div><dt>Rough cost</dt><dd id="stat-cost"></dd></div>
+          <div><dt>Time to build</dt><dd id="stat-time"></dd></div>
+        </dl>
+      </section>
+
+      <section class="panel diagram" aria-label="Brick orientation">
+        <h2>What you are stacking</h2>
+        <svg id="brick-diagram" role="img" aria-label="Isometric view of three stacked bricks"></svg>
+        <p class="caption" id="diagram-caption"></p>
+      </section>
+
+      <section class="panel ladder-panel" aria-label="Altitude milestones">
+        <h2>Landmarks on the way up</h2>
+        <svg id="ladder" role="img" aria-label="Logarithmic altitude scale with brick counts"></svg>
+      </section>
+    </main>
+
+    <footer class="colophon">
+      <h2>Assumptions</h2>
+      <ul>
+        <li>
+          Distances use an Earth radius of 6,371 km and a Moon radius of 1,737.4 km. Ground-to-ground
+          modes subtract both.
+        </li>
+        <li>
+          A LEGO stud nests into the tube below it, so stacking flat adds nothing. Stack the same
+          brick on its side and the stud has nowhere to go, which is why the count jumps.
+        </li>
+        <li>
+          Masonry courses include a mortar joint on whichever face you are bedding, so it applies in
+          every orientation.
+        </li>
+        <li>Prices are rough single-unit figures and are there for scale, not for budgeting.</li>
+        <li>
+          The tower is treated as a straight line. Gravity, structural collapse and orbital mechanics
+          are somebody else's problem.
+        </li>
+      </ul>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

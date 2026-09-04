@@ -1,0 +1,11 @@
+{
+  "name": "howmanybricks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "How many bricks would it take to stack from the Earth to the Moon?",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/",
+    "serve": "python3 -m http.server 8080 --directory public"
+  }
+}
