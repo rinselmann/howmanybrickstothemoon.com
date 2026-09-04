@@ -14,7 +14,7 @@ import {
   DISTANCE_MODES,
   MILESTONES,
   BUILD_RATES,
-} from '../public/js/data.js';
+} from '../js/data.js';
 
 const unique = (values) => new Set(values).size === values.length;
 

@@ -26,7 +26,7 @@ data.js  →  calc.js  →  app.js  →  viz.js
             format.js ───────────────┘
 ```
 
-- **`public/js/data.js`** — the brick catalogue and all constants. No behaviour.
+- **`js/data.js`** — the brick catalogue and all constants. No behaviour.
 - **`js/calc.js`** — every number the site displays. Pure: no DOM, no clock, no I/O.
 - **`js/format.js`** — number-to-string only. Separate from `calc.js` because these are
   legibility decisions, not arithmetic.

@@ -11,8 +11,8 @@ import {
   totalCostUsd,
   buildSeconds,
   computeStack,
-} from '../public/js/calc.js';
-import { BRICKS, DISTANCE_MODES, EARTH_RADIUS_KM, MOON_RADIUS_KM } from '../public/js/data.js';
+} from '../js/calc.js';
+import { BRICKS, DISTANCE_MODES, EARTH_RADIUS_KM, MOON_RADIUS_KM } from '../js/data.js';
 
 const brickById = (id) => BRICKS.find((b) => b.id === id);
 const modeById = (id) => DISTANCE_MODES.find((m) => m.id === id);

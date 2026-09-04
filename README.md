@@ -31,4 +31,4 @@ Stacking gaps are per-axis, not per-brick. A LEGO stud nests into the tube of th
 above it, so stacking flat adds nothing at all — but roll that brick onto its side and the
 stud has nowhere to go, adding 1.8 mm of dead air every single time. Mortar behaves the
 other way round: it goes on whichever face you are bedding, so it applies in every
-orientation. This is modelled by `gap.axes` in `public/js/data.js`.
+orientation. This is modelled by `gap.axes` in `js/data.js`.

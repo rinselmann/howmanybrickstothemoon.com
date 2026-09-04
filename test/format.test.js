@@ -9,7 +9,7 @@ import {
   formatDuration,
   formatMm,
   formatKm,
-} from '../public/js/format.js';
+} from '../js/format.js';
 
 test('formatExact groups thousands and rounds', () => {
   assert.equal(formatExact(40041666667), '40,041,666,667');

@@ -9,8 +9,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { BRICKS, MILESTONES, AXES } from '../public/js/data.js';
-import { stackPitchMm, brickCount } from '../public/js/calc.js';
+import { BRICKS, MILESTONES, AXES } from '../js/data.js';
+import { stackPitchMm, brickCount } from '../js/calc.js';
 
 /* ---- minimal DOM stub ---- */
 
@@ -59,7 +59,7 @@ globalThis.document = {
 
 // Imported after the stub exists, because viz.js resolves `document` at call
 // time but the import itself must not blow up in a bare Node process.
-const { renderBrickDiagram, renderLadder } = await import('../public/js/viz.js');
+const { renderBrickDiagram, renderLadder } = await import('../js/viz.js');
 
 const svg = () => new StubNode('svg');
 const numeric = /^-?\d+(\.\d+)?$/;
